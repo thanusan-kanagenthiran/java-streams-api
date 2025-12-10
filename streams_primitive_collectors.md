@@ -94,4 +94,4 @@ List<String> result = Stream.of("a", "b")
 | `summarizingInt()` | `IntSummaryStatistics` | Numeric statistics (count/sum/min/avg/max) |
 | `groupingByConcurrent()` | `ConcurrentMap<K, ...>` | Parallel-friendly grouping; unordered result |
 
-**Version notes:** If a method requires Java 9+ or later, it is marked in-line (e.g., `Collectors.toUnmodifiableList()` is Java 10+). If you want, I can add Java-version markers to every collector method in this file.
+**Version notes:** If a method requires Java 9+ or later, it is marked in-line (e.g., `Collectors.toUnmodifiableList()` is Java 10+). 
