@@ -21,7 +21,7 @@ Terminal operations consume the stream and produce a result or side effect. Grou
 - **`reduce()`** (three overloads): Folds elements into a single result. Useful for numeric sums or custom aggregations.
 
   Small example (`reduce`):
-  ```text
+  ```java
   // Sum using reduce (returns Optional<Integer> for single-arg form)
   Optional<Integer> sumOpt = Stream.of(1, 2, 3)
       .reduce(Integer::sum); // Optional[6]
@@ -34,7 +34,7 @@ Terminal operations consume the stream and produce a result or side effect. Grou
 - **`collect(Collector)`**: Most common pattern for building collections and complex reductions. Prefer `collect` when assembling containers because it uses mutable accumulators and is more efficient for that purpose.
 
   Small example (`collect`):
-  ```text
+  ```java
   // Collect to a list
   List<String> list = Stream.of("a","b","c")
       .collect(Collectors.toList());

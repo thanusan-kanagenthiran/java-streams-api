@@ -13,14 +13,14 @@ Performance note
 - **`range(startInclusive, endExclusive)`**: Generates an `IntStream` of values from `startInclusive` up to `endExclusive - 1`.
 
   Example:
-  ```text
+  ```java
   IntStream.range(0, 3).forEach(System.out::println); // 0, 1, 2
   ```
 
 - **`rangeClosed(startInclusive, endInclusive)`**: Generates an `IntStream` including the end value.
 
   Example:
-  ```text
+  ```java
   IntStream.rangeClosed(0, 3).forEach(System.out::println); // 0, 1, 2, 3
   ```
 
@@ -29,7 +29,7 @@ Performance note
 - **`boxed()`**: Converts a primitive stream to an object `Stream<T>` (e.g., `IntStream` → `Stream<Integer>`). Use when you must interoperate with APIs requiring object streams, but be aware of boxing overhead.
 
   Example:
-  ```text
+  ```java
   List<Integer> boxed = IntStream.of(1,2,3)
       .boxed()
       .collect(Collectors.toList());
@@ -45,7 +45,7 @@ Performance note
 - **`summaryStatistics()`**: Returns a statistics object (`IntSummaryStatistics`, `DoubleSummaryStatistics`) summarizing count, sum, min, average, and max in a single pass.
 
 Example:
-```text
+```java
 IntSummaryStatistics stats = IntStream.of(1,2,3).summaryStatistics();
 System.out.println(stats.getSum()); // 6
 ```
@@ -71,7 +71,7 @@ Below collectors are listed with: method name — purpose — notes/warnings (if
 - **`Collectors.groupingByConcurrent(classifier)`** — Concurrent variant of `groupingBy` optimized for parallel streams. Warning: Does not preserve encounter order and can have different performance characteristics.
 
 **Example for `collectingAndThen()`**
-```text
+```java
 // Collect to a list, then make it unmodifiable
 List<String> result = Stream.of("a", "b")
     .collect(Collectors.collectingAndThen(

@@ -11,7 +11,7 @@ Intermediate operations return a new stream and are lazy — they are not execut
 - **`mapMulti`** (Java 16+): Maps a single input element to zero or more output elements using a consumer-based callback; often more efficient than `flatMap` for emitting multiple elements per input.
 
   Example (`mapMulti`, Java 16+):
-  ```text
+  ```java
   // Expand words into characters
   Stream.of("hi","ok")
         .<Character>mapMulti((word, consumer) -> {
@@ -27,7 +27,7 @@ Intermediate operations return a new stream and are lazy — they are not execut
 - **`takeWhile`** / **`dropWhile`** (Java 9+): `takeWhile` keeps elements while the predicate is true and then stops; `dropWhile` skips elements while the predicate is true and then keeps the rest.
 
   Example (`takeWhile` / `dropWhile`, Java 9+):
-  ```text
+  ```java
   Stream.of(1,2,3,0,4,5)
         .takeWhile(n -> n > 0) // results: 1,2,3
         .forEach(System.out::println);

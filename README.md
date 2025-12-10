@@ -59,3 +59,12 @@ Overview → Creation → Intermediate → Terminal → Advanced (Primitive, Sho
 - Java API (Stream package): https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/package-summary.html
 
 For interview prep, focus on [streams_summary.md](./streams_summary.md) and run the corresponding examples in `demo_programs/` to internalize behavior and edge cases.
+
+## Deployment (GitHub Pages)
+
+This repository includes a GitHub Actions workflow (`.github/workflows/deploy_pages.yml`) that will deploy the repository root to GitHub Pages on pushes to the `main` branch. Once Pages is enabled for your repository the demo viewer will be available at:
+
+`https://<github-username>.github.io/<repository-name>/demo_viewer.html`
+
+Replace `<github-username>` and `<repository-name>` with your GitHub user/org and repository name. If you prefer to test locally, run a local HTTP server as shown in the "Demo viewer" section.
+

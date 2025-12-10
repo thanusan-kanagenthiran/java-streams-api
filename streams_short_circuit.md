@@ -32,7 +32,7 @@ These intermediate operations restrict or limit the number of elements passed do
 
 ### Examples
 
-```text
+```java
 // Terminal short-circuit: Find the first even number
 Optional<Integer> firstEven = Stream.of(1, 3, 5, 6, 7, 8)
     .filter(n -> n % 2 == 0)

@@ -37,7 +37,7 @@ Parallel streams combined with shared mutable state can produce subtle, hard-to-
 - Streams wrapping I/O resources should always be used in try-with-resources to prevent resource leaks.
 
   Example:
-  ```text
+  ```java
   try (Stream<String> s = Files.lines(path)) {
       s.forEach(System.out::println);
   }
@@ -67,7 +67,7 @@ Code safety and correctness
 
 ### Tiny example: preserve order in a parallel stream
 
-```text
+```java
 List<String> ordered = List.of("a","b","c","d");
 ordered.parallelStream()
        .map(s -> s.toUpperCase())

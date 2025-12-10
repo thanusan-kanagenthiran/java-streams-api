@@ -9,7 +9,7 @@ Below are common ways to create streams, grouped by source type for easier scann
 - **`collection.stream()`**: Returns a sequential `Stream` reflecting the collection’s encounter order. Ideal for most use cases where order and single-threaded processing are sufficient.
 
   Example:
-  ```text
+  ```java
   List<String> list = List.of("a", "b", "c");
   list.stream().filter(s -> !s.isEmpty()).forEach(System.out::println);
   ```
@@ -27,7 +27,7 @@ Below are common ways to create streams, grouped by source type for easier scann
 - **`Arrays.stream(array)`**: Converts an array (primitive or object) into a `Stream`, maintaining the array’s order.
 
   Example:
-  ```text
+  ```java
   String[] arr = {"x", "y", "z"};
   Arrays.stream(arr).map(String::toUpperCase).toArray(String[]::new);
   ```
@@ -41,7 +41,7 @@ Below are common ways to create streams, grouped by source type for easier scann
 - **`map.entrySet().stream()`**: Creates a `Stream` of `Map.Entry<K,V>` useful for transforming or filtering based on both key and value.
 
   Example:
-  ```text
+  ```java
   Map<String,Integer> m = Map.of("a",1,"b",2);
   m.entrySet().stream().filter(e -> e.getValue() > 1).forEach(System.out::println);
   ```
@@ -53,7 +53,7 @@ Below are common ways to create streams, grouped by source type for easier scann
 - **`Stream.empty()`**: Returns a `Stream` with no elements, often used as a default or to avoid nulls.
 
   Example (`Stream.of` and `Stream.ofNullable`):
-  ```text
+  ```java
   Stream.of("a","b").forEach(System.out::println);
   Stream.ofNullable(null).count(); // 0
   ```
@@ -65,7 +65,7 @@ Below are common ways to create streams, grouped by source type for easier scann
 - **`Stream.iterate(seed, predicate, f)`** (Java 9+): Produces a finite `Stream` that stops when the predicate returns false.
 
   Example (`Stream.generate`):
-  ```text
+  ```java
   Stream.generate(Math::random).limit(3).forEach(System.out::println);
   ```
 
@@ -75,7 +75,7 @@ Below are common ways to create streams, grouped by source type for easier scann
 - **`Stream.builder()`**: Allows step-by-step construction of a `Stream` when elements are not known up front.
 
   Example (`Stream.builder`):
-  ```text
+  ```java
   Stream.Builder<String> b = Stream.builder();
   b.add("one").add("two");
   b.build().forEach(System.out::println);
