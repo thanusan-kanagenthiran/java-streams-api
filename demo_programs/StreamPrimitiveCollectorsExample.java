@@ -1,4 +1,5 @@
-package streams;
+package demo_programs;
+
 import java.util.*;
 import java.util.stream.*;
 

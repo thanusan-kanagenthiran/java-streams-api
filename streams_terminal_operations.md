@@ -13,7 +13,14 @@ Terminal operations consume the stream and produce a result or side effect. Grou
 
 - **`toArray`**: Collects elements into an array.
 - **`toList()`** (Java 16+) : Collects elements into an unmodifiable `List`.
-- **`toCollection(Supplier)`**: Collects elements into a custom collection instance.
+- **`toCollection(Supplier)`**: Collects elements into a custom collection instance. The `Supplier` is a functional interface that provides a factory method to create a new collection instance, allowing you to specify the exact type of collection (e.g., `ArrayList`, `LinkedList`).
+
+  Small example (`toCollection`):
+  ```java
+  // Collect to a specific collection type
+  LinkedList<String> linkedList = Stream.of("a","b","c")
+      .collect(Collectors.toCollection(LinkedList::new));
+  ```
 - **`Collectors.toUnmodifiableList()`** (Java 10+): Returns an unmodifiable list (useful pre-Java 16 or when you need explicit collector variant).
 
 ### Reduction

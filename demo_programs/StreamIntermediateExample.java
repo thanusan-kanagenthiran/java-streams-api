@@ -1,132 +1,157 @@
-package streams;
+package demo_programs;
 
 import java.util.*;
 import java.util.stream.*;
 
 public class StreamIntermediateExample {
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
 
-        // ===================================================
-        // Sample Stream Data
-        // ===================================================
-        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 2, 3);
-        System.out.println("Original List: " + numbers);
+                // ===================================================
+                // Sample Stream Data
+                // ===================================================
+                List<Integer> numbers = List.of(1, 2, 3, 4, 5, 2, 3);
+                System.out.println("Original List: " + numbers);
 
-        // ===================================================
-        // 1️⃣ filter
-        // ===================================================
-        // Retains only elements matching the predicate
-        List<Integer> filtered = numbers.stream()
-                .filter(n -> n % 2 == 0)
-                .toList();
-        System.out.println("Filter even numbers: " + filtered);
+                // ===================================================
+                // 1️⃣ filter
+                // ===================================================
+                // Retains only elements matching the predicate
+                List<Integer> filtered = numbers.stream()
+                                .filter(n -> n % 2 == 0)
+                                .toList();
+                System.out.println("Filter even numbers: " + filtered);
 
-        // ===================================================
-        // 2️⃣ map / mapToX
-        // ===================================================
-        // Transforms each element
-        List<Integer> squared = numbers.stream()
-                .map(n -> n * n) // square each number
-                .toList();
-        System.out.println("Squared numbers: " + squared);
+                // ===================================================
+                // 2️⃣ map / mapToX
+                // ===================================================
+                // Transforms each element
+                List<Integer> squared = numbers.stream()
+                                .map(n -> n * n) // square each number
+                                .toList();
+                System.out.println("Squared numbers: " + squared);
 
-        int mapToIntExample = numbers.stream()
-                .mapToInt(n -> n) // convert to IntStream
-                .sum();
-        System.out.println("mapToInt example sum: " + mapToIntExample);
+                int mapToIntExample = numbers.stream()
+                                .mapToInt(n -> n) // convert to IntStream
+                                .sum();
+                System.out.println("mapToInt example sum: " + mapToIntExample);
 
-        // ===================================================
-        // 3️⃣ flatMap
-        // ===================================================
-        // Maps each element to a stream, then flattens
-        List<List<Integer>> listOfLists = List.of(
-                List.of(1, 2),
-                List.of(3, 4),
-                List.of(5)
-        );
-        List<Integer> flattened = listOfLists.stream()
-                .flatMap(List::stream)
-                .toList();
-        System.out.println("Flattened list: " + flattened);
+                // ===================================================
+                // 3️⃣ flatMap
+                // ===================================================
+                // Maps each element to a stream, then flattens
+                List<List<Integer>> listOfLists = List.of(
+                                List.of(1, 2),
+                                List.of(3, 4),
+                                List.of(5));
+                List<Integer> flattened = listOfLists.stream()
+                                .flatMap(List::stream)
+                                .toList();
+                System.out.println("Flattened list: " + flattened);
 
-        // ===================================================
-        // 4️⃣ distinct
-        // ===================================================
-        // Removes duplicates
-        List<Integer> distinctNumbers = numbers.stream()
-                .distinct()
-                .toList();
-        System.out.println("Distinct numbers: " + distinctNumbers);
+                // ===================================================
+                // 4️⃣ distinct
+                // ===================================================
+                // Removes duplicates
+                List<Integer> distinctNumbers = numbers.stream()
+                                .distinct()
+                                .toList();
+                System.out.println("Distinct numbers: " + distinctNumbers);
 
-        // ===================================================
-        // 5️⃣ sorted
-        // ===================================================
-        // Sorts elements naturally or using a comparator
-        List<Integer> sortedNumbers = numbers.stream()
-                .sorted()
-                .toList();
-        System.out.println("Sorted numbers: " + sortedNumbers);
+                // ===================================================
+                // 5️⃣ sorted
+                // ===================================================
+                // Sorts elements naturally or using a comparator
+                List<Integer> sortedNumbers = numbers.stream()
+                                .sorted()
+                                .toList();
+                System.out.println("Sorted numbers: " + sortedNumbers);
 
-        List<Integer> reverseSorted = numbers.stream()
-                .sorted(Comparator.reverseOrder())
-                .toList();
-        System.out.println("Reverse sorted numbers: " + reverseSorted);
+                List<Integer> reverseSorted = numbers.stream()
+                                .sorted(Comparator.reverseOrder())
+                                .toList();
+                System.out.println("Reverse sorted numbers: " + reverseSorted);
 
-        // ===================================================
-        // 6️⃣ limit / skip
-        // ===================================================
-        // Truncates stream size or skips first N elements
-        List<Integer> limited = numbers.stream()
-                .limit(3)
-                .toList();
-        System.out.println("Limited (first 3): " + limited);
+                // ===================================================
+                // 6️⃣ limit / skip
+                // ===================================================
+                // Truncates stream size or skips first N elements
+                List<Integer> limited = numbers.stream()
+                                .limit(3)
+                                .toList();
+                System.out.println("Limited (first 3): " + limited);
 
-        List<Integer> skipped = numbers.stream()
-                .skip(2)
-                .toList();
-        System.out.println("Skipped first 2: " + skipped);
+                List<Integer> skipped = numbers.stream()
+                                .skip(2)
+                                .toList();
+                System.out.println("Skipped first 2: " + skipped);
 
-        // ===================================================
-        // 7️⃣ takeWhile / dropWhile (Java 9+)
-        // ===================================================
-        // takeWhile: process elements while predicate is true
-        List<Integer> taken = numbers.stream()
-                .takeWhile(n -> n < 4)
-                .toList();
-        System.out.println("takeWhile < 4: " + taken);
+                // ===================================================
+                // 7️⃣ takeWhile / dropWhile (Java 9+)
+                // ===================================================
+                // takeWhile: process elements while predicate is true
+                List<Integer> taken = numbers.stream()
+                                .takeWhile(n -> n < 4)
+                                .toList();
+                System.out.println("takeWhile < 4: " + taken);
 
-        // dropWhile: skip elements while predicate is true
-        List<Integer> dropped = numbers.stream()
-                .dropWhile(n -> n < 4)
-                .toList();
-        System.out.println("dropWhile < 4: " + dropped);
+                // dropWhile: skip elements while predicate is true
+                List<Integer> dropped = numbers.stream()
+                                .dropWhile(n -> n < 4)
+                                .toList();
+                System.out.println("dropWhile < 4: " + dropped);
 
-        // ===================================================
-        // 8️⃣ mapMulti (Java 16+)
-        // ===================================================
-        // Efficient one-to-many mapping
-        List<String> mapMultiExample = Stream.of("a", "b", "c")
-                .<String>mapMulti((ch, consumer) -> {
-                    consumer.accept(ch + "1");
-                    consumer.accept(ch + "2");
-                })
-                .toList();
-        System.out.println("mapMulti result: " + mapMultiExample);
 
-        // ===================================================
-        // 9️⃣ peek
-        // ===================================================
-        // Mainly for debugging, does not alter elements
-        List<Integer> peeked = numbers.stream()
-                .peek(n -> System.out.println("Peek: " + n))
-                .map(n -> n * 10)
-                .toList();
-        System.out.println("After peek & multiply by 10: " + peeked);
 
-        // ===================================================
-        // 🔑 Laziness Note
-        // ===================================================
-        // None of the above intermediate operations execute until a terminal operation (like collect, forEach) is invoked.
-    }
+                // ===================================================
+                // 8️⃣ mapMulti (Java 16+)
+                // ===================================================
+                // Efficient one-to-many mapping without intermediate streams
+                // More efficient than flatMap for stateless mappings
+                //
+                // How mapMulti works:
+                // - Takes a BiConsumer<T, Consumer<R>> where T is input type, R is output type
+                // - The 'consumer' parameter is a Consumer<R> provided by the stream framework
+                // - Call consumer.accept(element) to emit each output element into the stream
+                // - You can emit 0, 1, or multiple elements per input
+                // - The data type <R> (e.g., <String>) specifies what type consumer accepts
+                List<String> mapMultiExample = Stream.of("a", "b", "c")
+                                .<String>mapMulti((ch, consumer) -> {
+                                        consumer.accept(ch + "1"); // Emit first derived element
+                                        consumer.accept(ch + "2"); // Emit second derived element
+                                })
+                                .toList();
+                System.out.println("mapMulti result: " + mapMultiExample);
+
+                System.out.println("numbers before mapMulti: " + numbers);
+                // Efficient usage: emit conditionally or multiple elements
+                List<Integer> numbersExpanded = numbers.stream()
+                                .<Integer>mapMulti((n, consumer) -> {
+                                        if (n % 2 == 0) {
+                                                consumer.accept(n); // Emit original even number
+                                                consumer.accept(n * 10); // Emit scaled version
+                                        } else if (n % 3 == 0) {
+                                                consumer.accept(n); // Emit original odd number divisible by 3
+                                        }
+                                        // Skip odd numbers (emit nothing)
+                                })
+                                .toList();
+                System.out.println("mapMulti conditional expansion: " + numbersExpanded);
+
+                // ===================================================
+                // 9️⃣ peek
+                // ===================================================
+                // Mainly for debugging, does not alter elements
+                List<Integer> peeked = numbers.stream()
+                                .peek(n -> System.out.println("Peek: " + n))
+                                .map(n -> n * 10)
+                                .toList();
+                System.out.println("After peek & multiply by 10: " + peeked);
+
+                // ===================================================
+                // 🔑 Laziness Note
+                // ===================================================
+                // None of the above intermediate operations execute until a terminal operation
+                // (like collect, forEach) is invoked.
+        }
 }

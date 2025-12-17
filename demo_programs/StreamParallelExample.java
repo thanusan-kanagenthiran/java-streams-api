@@ -1,4 +1,5 @@
-package streams;
+package demo_programs;
+
 import java.util.*;
 import java.util.stream.*;
 
@@ -28,10 +29,10 @@ public class StreamParallelExample {
         // Hints that encounter order does not matter
         // Can improve performance for some operations, especially parallel
         List<Integer> unorderedResult = numbers.stream()
-                                               .unordered()
-                                               .parallel() // combine with parallel for optimization
-                                               .map(n -> n * 2)
-                                               .toList();
+                .unordered()
+                .parallel() // combine with parallel for optimization
+                .map(n -> n * 2)
+                .toList();
         System.out.println("Unordered result (parallel map x2): " + unorderedResult);
 
         // ===================================================
@@ -64,7 +65,7 @@ public class StreamParallelExample {
         // ===================================================
         // Register cleanup actions and close the stream
         try (Stream<Integer> closableStream = numbers.stream()
-                                                     .onClose(() -> System.out.println("Stream closed!"))) {
+                .onClose(() -> System.out.println("Stream closed!"))) {
             List<Integer> result = closableStream.toList(); // terminal operation
             System.out.println("Closable stream result: " + result);
         } // try-with-resources auto-closes the stream and triggers the onClose handler
